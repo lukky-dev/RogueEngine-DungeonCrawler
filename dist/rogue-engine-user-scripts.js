@@ -47,23 +47,43 @@ class Dungeon extends rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Component {
     super(...arguments);
     this.wallTile = three__WEBPACK_IMPORTED_MODULE_1__.Object3D;
     this.floorTile = three__WEBPACK_IMPORTED_MODULE_1__.Object3D;
+    this.player = three__WEBPACK_IMPORTED_MODULE_1__.Object3D;
   }
   start() {
     this.dungeonGenerator = (0,_Scripts_DungeonGenerator__WEBPACK_IMPORTED_MODULE_2__.DungeonGenerator)();
     this.map = this.dungeonGenerator.generate();
     console.log(this.map);
+    this.spawnPoint = {x: 0, y: 0};
     this.addWall(0, 0);
     this.addFloor(0, 0);
     this.addDungeonToScene();
+    this.player.position.set(this.spawnPoint.x, 0, this.spawnPoint.y);
   }
   addDungeonToScene() {
     for (var x = 0; x < this.map.length; x++) {
       for (var y = 0; y < this.map[0].length; y++) {
         if (this.map[x][y].cellType == "empty") {
+          if (this.spawnPoint.x == 0 && this.spawnPoint.y == 0) {
+            this.spawnPoint.x = x;
+            this.spawnPoint.y = y;
+          }
           this.addFloor(x, y);
-        }
-        if (this.map[x][y].cellType == "wall") {
-          this.addWall(x, y);
+          if (this.map[x][y + 1] && this.map[x][y + 1].cellType == "wall") {
+            this.map[x][y + 1].cellType == "wall-placed";
+            this.addWall(x, y + 1);
+          }
+          if (this.map[x][y - 1] && this.map[x][y - 1].cellType == "wall") {
+            this.map[x][y + 1].cellType == "wall-placed";
+            this.addWall(x, y - 1);
+          }
+          if (this.map[x + 1][y] && this.map[x + 1][y].cellType == "wall") {
+            this.map[x][y + 1].cellType == "wall-placed";
+            this.addWall(x + 1, y);
+          }
+          if (this.map[x - 1][y] && this.map[x - 1][y].cellType == "wall") {
+            this.map[x][y + 1].cellType == "wall-placed";
+            this.addWall(x - 1, y);
+          }
         }
       }
     }
@@ -87,6 +107,9 @@ __decorateClass([
 __decorateClass([
   rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Prop("Object3D")
 ], Dungeon.prototype, "floorTile", 2);
+__decorateClass([
+  rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Prop("Object3D")
+], Dungeon.prototype, "player", 2);
 __name(Dungeon, "Dungeon");
 rogue_engine__WEBPACK_IMPORTED_MODULE_0__.registerComponent(Dungeon);
 
