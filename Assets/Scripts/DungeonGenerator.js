@@ -1,4 +1,4 @@
-export default DungeonGenerator = (function(){
+function DungeonGenerator(){
 
   var MAXSIZE, MINSIZE, ROWS, COLS, BORDER,
       ATTEMPTS, WALL='W', EMPTY='E', ROOMS;
@@ -128,7 +128,7 @@ export default DungeonGenerator = (function(){
       var floorMap = [];
       for (var i = 0; i < ROWS; i++) {
         var r = [];
-        for (j = 0; j < COLS; j++) {
+        for (var j = 0; j < COLS; j++) {
           r.push(WALL);
         }
         floorMap.push(r);
@@ -172,4 +172,6 @@ export default DungeonGenerator = (function(){
     }
   };
   return DungeonGenerator;
-})();
+}
+
+export {DungeonGenerator};
