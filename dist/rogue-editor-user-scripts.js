@@ -13,7 +13,7 @@ return (self["webpackChunk_name_"] = self["webpackChunk_name_"] || []).push([["r
 /******/ "use strict";
 /******/ 
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ var __webpack_exports__ = (__webpack_exec__("./Assets/Components/Dungeon.js"), __webpack_exec__("./Assets/Scripts/DungeonGenerator.js"));
+/******/ var __webpack_exports__ = (__webpack_exec__("./Assets/Components/Dungeon.js"), __webpack_exec__("./Assets/Components/PlayerMovement.js"), __webpack_exec__("./Assets/Scripts/DungeonGenerator.js"));
 /******/ return __webpack_exports__;
 /******/ }
 ]);

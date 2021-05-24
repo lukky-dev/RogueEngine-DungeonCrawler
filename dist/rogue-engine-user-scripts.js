@@ -116,6 +116,68 @@ rogue_engine__WEBPACK_IMPORTED_MODULE_0__.registerComponent(Dungeon);
 
 /***/ }),
 
+/***/ "./Assets/Components/PlayerMovement.js":
+/*!*********************************************!*\
+  !*** ./Assets/Components/PlayerMovement.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PlayerMovement)
+/* harmony export */ });
+/* harmony import */ var rogue_engine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rogue-engine */ "rogue-engine");
+/* harmony import */ var rogue_engine__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(rogue_engine__WEBPACK_IMPORTED_MODULE_0__);
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __name = (target, value) => __defProp(target, "name", {value, configurable: true});
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result)
+    __defProp(target, key, result);
+  return result;
+};
+
+class PlayerMovement extends rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Component {
+  constructor() {
+    super(...arguments);
+    this.movementSpeed = Number;
+    this.rotationSpeed = Number;
+  }
+  awake() {
+  }
+  start() {
+  }
+  update() {
+    if (rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Input.keyboard.getKeyPressed("KeyW")) {
+      this.object3d.translateZ(-this.movementSpeed * rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Runtime.deltaTime);
+    }
+    if (rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Input.keyboard.getKeyPressed("KeyS")) {
+      this.object3d.translateZ(this.movementSpeed * rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Runtime.deltaTime);
+    }
+    if (rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Input.keyboard.getKeyPressed("KeyD")) {
+      this.object3d.rotateY(-this.rotationSpeed * rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Runtime.deltaTime);
+    }
+    if (rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Input.keyboard.getKeyPressed("KeyA")) {
+      this.object3d.rotateY(this.rotationSpeed * rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Runtime.deltaTime);
+    }
+  }
+}
+__decorateClass([
+  rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Prop("Number")
+], PlayerMovement.prototype, "movementSpeed", 2);
+__decorateClass([
+  rogue_engine__WEBPACK_IMPORTED_MODULE_0__.Prop("Number")
+], PlayerMovement.prototype, "rotationSpeed", 2);
+__name(PlayerMovement, "PlayerMovement");
+rogue_engine__WEBPACK_IMPORTED_MODULE_0__.registerComponent(PlayerMovement);
+
+
+/***/ }),
+
 /***/ "./Assets/Scripts/DungeonGenerator.js":
 /*!********************************************!*\
   !*** ./Assets/Scripts/DungeonGenerator.js ***!
@@ -478,6 +540,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_three__;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	__webpack_require__("./Assets/Components/Dungeon.js");
+/******/ 	__webpack_require__("./Assets/Components/PlayerMovement.js");
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./Assets/Scripts/DungeonGenerator.js");
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
